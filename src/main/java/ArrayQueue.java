@@ -1,18 +1,17 @@
 /**
- * 自定义栈实现
+ * 数组队列
  *
  * @author chy
- * @date 2020-06-09 10:37
+ * @date 2020-07-16 15:12
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queue<E> {
+    private Array<E> array;
 
-    Array<E> array;
-
-    public ArrayStack(int capacity) {
+    public ArrayQueue(int capacity) {
         this.array = new Array<>(capacity);
     }
 
-    public ArrayStack() {
+    public ArrayQueue() {
         this.array = new Array<>();
     }
 
@@ -27,36 +26,32 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     @Override
-    public void push(E e) {
+    public void enqueue(E e) {
         this.array.addLast(e);
     }
 
     @Override
-    public E pop() {
-        return this.array.removeLast();
+    public E dequeue() {
+        return this.array.removeFirst();
     }
 
     @Override
-    public E peek() {
-        return this.array.getLast();
-    }
-
-    private int getCapacity() {
-        return this.array.getCapacity();
+    public E getFront() {
+        return this.array.getFirst();
     }
 
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append("Stack: ");
-        res.append("[");
+        res.append("Queue: ");
+        res.append("front [");
         for (int i = 0; i < this.array.getSize(); i++) {
             res.append(this.array.get(i));
             if (i != this.array.getSize() - 1) {
                 res.append(", ");
             }
         }
-        res.append("] top");
+        res.append("] tail");
         return res.toString();
     }
 }
