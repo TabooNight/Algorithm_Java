@@ -15,6 +15,15 @@ public class ListedListTest {
 
         list.add(2, 666);
         System.out.println(list);
+
+        list.remove(2);
+        System.out.println(list);
+
+        list.removeFirst();
+        System.out.println(list);
+
+        list.removeLast();
+        System.out.println(list);
     }
 }
 
